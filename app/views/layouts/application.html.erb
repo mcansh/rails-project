@@ -4,11 +4,14 @@
     <title>RailsProject</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <%= content_tag(:p, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+    <%= content_tag(:p, flash[:error], :id => "flash_error") if flash[:error] %>
+    <%= content_tag(:p, flash[:alert], :id => "flash_alert") if flash[:alert] %>
     <%= yield %>
   </body>
 </html>
