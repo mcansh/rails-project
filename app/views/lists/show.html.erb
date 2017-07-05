@@ -1,5 +1,10 @@
 <%= @list.name %>
 
+<%= form_for([@list, @task]) do |f| %>
+  <%= f.text_field :description, placeholder: "Create New Task" %>
+  <%= f.submit :style => "display: none" %>
+<% end %>
+
 <ul>
   <% @list.tasks.each do |task| %>
     <li><%= task.description %></li>
