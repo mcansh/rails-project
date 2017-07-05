@@ -1,5 +1,5 @@
 <%= form_for(@list) do |f| %>
-  <%= f.text_field :name, placeholder: "Create New List" %>
+  <%= f.text_field :name, placeholder: (@list.errors.full_messages_for(:name).first || "Create New List") %>
   <%= f.submit :style => "display: none" %>
 <% end %>
 <% @lists.each do |list| %>
