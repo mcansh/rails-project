@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'site#index'
+  resources :lists
+  root 'lists#index'
+  get '/about' => 'site#about'
   # root 'sessions#new'
   # get '/signup' => 'users#new'
   # post '/signup' => 'users#create'
