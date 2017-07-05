@@ -9,8 +9,15 @@ class TasksController < ApplicationController
     end
   end
 
+  def update
+    @list = List.find_by(id: params[:list_id])
+    @task = @list.tasks.find(params[:id])
+    @task.update(task_params)
+    redirect_to @task.list
+  end
+
   private
     def task_params
-      params.require(:task).permit(:description)
+      params.require(:task).permit(:description, :status)
     end
 end
