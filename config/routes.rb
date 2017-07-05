@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  resources :lists
+  get 'tasks/create'
+
+  resources :lists do
+    resources :tasks
+  end
   root 'lists#index'
   get '/about' => 'site#about'
-  # root 'sessions#new'
   # get '/signup' => 'users#new'
   # post '/signup' => 'users#create'
   # get '/signin' => 'sessions#new'
