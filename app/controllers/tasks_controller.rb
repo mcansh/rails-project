@@ -4,6 +4,8 @@ class TasksController < ApplicationController
     @task = @list.tasks.build(task_params)
     if @task.save
       redirect_to @list
+    else
+      render "lists/show"
     end
   end
 
