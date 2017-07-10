@@ -7,14 +7,6 @@
 
 <ul>
   <% @list.tasks.each do |task| %>
-    <li>
-      <%= form_for([@list, task]) do |f| %>
-        <!-- <input id="<#%= task.list.name.downcase.parameterize %>-<%#= task.id %>" type="checkbox" <%#= "checked" if task.complete? %> /> -->
-        <%= f.check_box :status, id: "#{task.list.name.downcase.parameterize}-#{task.id}", checked: (true if task.complete?) %>
-        <label for="<%= task.list.name.downcase.parameterize %>-<%= task.id %>">
-          <span><%= task.description %></span>
-        </label>
-      <% end %>
-    </li>
+    <%= render partial: "tasks/task_li", locals: { task: task } %>
   <% end %>
 </ul>
