@@ -6,7 +6,5 @@
 <% end %>
 
 <ul>
-  <% @list.tasks.each do |task| %>
-    <%= render partial: "tasks/task_li", locals: { task: task } %>
-  <% end %>
+  <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
 </ul>
