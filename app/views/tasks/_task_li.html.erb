@@ -1,7 +1,7 @@
 <li>
   <%= form_for([@list, task]) do |f| %>
-    <%= f.check_box :status, id: "#{task.list.name.downcase.parameterize}-#{task.id}", checked: (true if task.complete?) %>
-    <label for="<%= task.list.name.downcase.parameterize %>-<%= task.id %>">
+    <%= f.check_box :status, id: task_for_text(task), checked: task.complete? %>
+    <label for="<%= task_for_text(task) %>">
       <span><%= task.description %></span>
     </label>
   <% end %>
