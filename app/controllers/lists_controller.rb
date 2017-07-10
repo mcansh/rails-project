@@ -5,18 +5,24 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
+    @list = List.find_by(id: params[:id])
     @task = Task.new
   end
 
   def create
     @list = List.new(list_params)
     if @list.save
-      redirect_to list
+      redirect_to @list
     else
       @lists = List.all
       render :index
     end
+  end
+
+  def destroy
+    @list = List.find_by(id: params[:id])
+    @list.destroy
+    redirect_to root_path
   end
 
   private
