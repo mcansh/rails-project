@@ -1,10 +1,10 @@
 <h1><%= @list.name %></h1>
 
 <%= form_for([@list, @task]) do |f| %>
-  <%= f.text_field :description, placeholder: (@task.errors.full_messages_for(:description).first || "Create New List") %>
+  <%= f.text_field :description, placeholder: (@task.errors.full_messages_for(:description).first || "Create New Task") %>
   <%= f.submit :style => "display: none" %>
 <% end %>
 
-<ul>
+<ul class="task__list">
   <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
 </ul>
