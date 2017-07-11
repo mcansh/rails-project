@@ -1,0 +1,14 @@
+<h1>Signup!</h1>
+<%= form_for(@user) do |f| %>
+  <fieldset>
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: 'Logan' %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :email %>
+    <%= f.email_field :email, placeholder: 'first@last.com'  %>
+  </fieldset>
+  <fieldset>
+    <%= f.submit %>
+  </fieldset>
+<% end %>
