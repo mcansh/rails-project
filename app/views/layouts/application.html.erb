@@ -13,7 +13,7 @@
     <%= content_tag(:p, flash[:alert], :id => "flash_alert") if flash[:alert] %>
 
     <% if current_user %>
-      <h1>Hey, <%= current_user.name %>!</h1>
+      <h1>Hey, <%= current_user.username %>!</h1>
       <%= link_to "Logout", logout_path %>
     <% end %>
 
