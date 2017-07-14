@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  get 'tasks/create'
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create]
 
   resources :lists do
     resources :tasks
   end
+
   root 'lists#index'
   get '/about' => 'site#about'
-  # get '/signup' => 'users#new'
-  # post '/signup' => 'users#create'
-  # get '/signin' => 'sessions#new'
-  # post '/signin' => 'sessions#create'
-  # get '/signout' => 'sessions#destroy'
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+  get '/login' => 'sessions#new'
+  post '/sessions' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 end
