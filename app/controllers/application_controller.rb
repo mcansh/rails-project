@@ -6,4 +6,14 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  def authentication_required
+    if !logged_in?
+      redirect_to signin_path
+    end
+  end
+
+  def logged_in?
+    session[:user_id]
+  end
 end
