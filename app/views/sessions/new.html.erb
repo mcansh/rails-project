@@ -1,8 +1,8 @@
 <h1>Login!</h1>
 <%= form_tag(sessions_path) do %>
   <fieldset>
-    <%= label_tag :email %>
-    <%= email_field_tag :email, '', placeholder: 'first@last.com'  %>
+    <%= label_tag :email, 'Email or Username' %>
+    <%= text_field_tag :email, '', placeholder: 'first@last.com or firstlast'  %>
   </fieldset>
   <fieldset>
     <%= label_tag :password %>

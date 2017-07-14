@@ -2,7 +2,11 @@
 <%= form_for(@user) do |f| %>
   <fieldset>
     <%= f.label :name %>
-    <%= f.text_field :name, placeholder: 'Logan' %>
+    <%= f.text_field :name, placeholder: 'First Last' %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :username %>
+    <%= f.text_field :username, placeholder: 'firstlast' %>
   </fieldset>
   <fieldset>
     <%= f.label :email %>

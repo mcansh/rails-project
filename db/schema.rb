@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170705214037) do
 ActiveRecord::Schema.define(version: 20170711003556) do
+ActiveRecord::Schema.define(version: 20170714200238) do
 
   create_table "lists", force: :cascade do |t|
     t.string "name"
@@ -33,5 +34,7 @@ ActiveRecord::Schema.define(version: 20170711003556) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.string "username"
   end
+
 end
