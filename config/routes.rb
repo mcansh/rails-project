@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'lists#index'
   get '/auth/:provider/callback' => 'sessions#create'
-  get '/about' => 'site#about'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
   get '/login' => 'sessions#new'
