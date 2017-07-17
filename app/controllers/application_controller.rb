@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   private
     def can_current_user?(action, object)
-      object.viewable_by?(current_user)
+      object.send("#{action}able_by?", current_user)
     end
 
     def login(user)
