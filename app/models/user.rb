@@ -16,4 +16,7 @@ class User < ApplicationRecord
       user.name = oauth_user["name"]
     end
   end
+
+  has_many :shared_lists
+  has_many :lists, :through => :shared_lists
 end
