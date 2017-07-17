@@ -24,6 +24,9 @@ class ListsController < ApplicationController
   end
 
   def edit
+    if !can_current_user?(:edit, @list)
+      redirect_to @list, notice: "You can't edit that!"
+    end
   end
 
   def update
