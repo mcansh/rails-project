@@ -8,7 +8,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find_by(id: params[:id])
     if !can_current_user?(:view, @list)
-      redirect_to root_path, notice: "nope!!!!"
+      redirect_to root_path, notice: "You can't view that!"
     end
     @task = Task.new
   end
