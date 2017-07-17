@@ -3,18 +3,18 @@ class SharedList < ApplicationRecord
   belongs_to :list
 
   PERMISSIONS = {
-    owner: 0,
-    editor: 10,
-    viewer: 100
+    destroy: 0,
+    edit: 10,
+    view: 100
   }
 
-  def viewable?
-    self.permission <= PERMISSIONS[:viewer]
+  def self.permissable(*args)
+    args.each do |action|
+      define_method "#{action}able?" do
+        self.permission <= PERMISSIONS[action]
+      end
+    end
   end
-  def editable?
-    self.permission <= PERMISSIONS[:editor]
-  end
-  def destroyable?
-    self.permission <= PERMISSIONS[:owner]
-  end
+
+  permissable :view, :edit, :destroy
 end
