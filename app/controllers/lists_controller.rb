@@ -1,5 +1,5 @@
 class ListsController < ApplicationController
-  before_action :authentication_required
+  before_action :set_list
   def index
     @list = List.new
     @lists = List.all
@@ -7,6 +7,9 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(id: params[:id])
+    if !can_current_user?(:view, @list)
+      redirect_to root_path, notice: "nope!!!!"
+    end
     @task = Task.new
   end
 
@@ -20,8 +23,15 @@ class ListsController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    @list.update(list_params)
+    redirect_to @list, notice: "#{@list.name} updated!"
+  end
+
   def destroy
-    @list = List.find_by(id: params[:id])
     @list.destroy
     redirect_to root_path
   end
@@ -29,5 +39,9 @@ class ListsController < ApplicationController
   private
     def list_params # strong params
       params.require(:list).permit(:name)
+    end
+
+    def set_list
+      @list = List.find_by(id: params[:id])
     end
 end
