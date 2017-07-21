@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
 
     def login_required
       if !logged_in?
-        redirect_to login_path, notice: "Please login first!"
+        redirect_to signin_path, alert: "Please sign in first!"
       end
     end
 
