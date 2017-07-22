@@ -4,7 +4,7 @@ header {
   align-items: center;
 
   a {
-    font-size: 1em;
+    font-size: 1rem;
     margin-left: 20px;
     &:first-of-type {
       margin-left: 0;
@@ -12,7 +12,7 @@ header {
   }
 
   h1 {
-    font-size: 1em;
+    font-size: 1rem;
     margin-right: 30px;
     font-weight: normal;
   }
@@ -20,4 +20,7 @@ header {
 
 .branding {
   flex-grow: 1;
+  & > a {
+    font-size: 1.5rem;
+  }
 }

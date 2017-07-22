@@ -9,7 +9,7 @@
   <body>
     <header>
       <div class="branding">
-        <h1><%= link_to 'TASK', root_path %></h1>
+        <%= link_to 'TASK', root_path %>
       </div>
       <% if current_user %>
         <h1>Hi, <%= current_user.username %>!</h1>
@@ -33,9 +33,7 @@
         <% end %>
       </ul>
     <% end %>
-
     <%= yield %>
-    <!-- <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %> -->
     <%= javascript_pack_tag 'application' %>
   </body>
 </html>

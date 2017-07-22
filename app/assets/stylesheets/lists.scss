@@ -24,3 +24,12 @@ input:checked + label {
   list-style: none;
   padding: 0;
 }
+
+.list__nav {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3em;
+  h1 {
+    flex-grow: 1
+  }
+}

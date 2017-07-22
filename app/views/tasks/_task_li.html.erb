@@ -1,4 +1,4 @@
-<li>
+<li class="task__list--item">
   <%= form_for([@list, task], class: 'task__form') do |f| %>
     <%= f.check_box :status, id: task_for_text(task), checked: task.complete? %>
     <label for="<%= task_for_text(task) %>">
@@ -6,5 +6,5 @@
     </label>
   <% end %>
 
-  <%= button_to 'x', list_task_path(task.list, task), method: :delete, class: 'task__form--destroy' %>
+  <%= button_to 'Delete Task', list_task_path(task.list, task), method: :delete, class: 'task__form--destroy button' %>
 </li>

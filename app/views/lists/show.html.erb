@@ -1,5 +1,7 @@
-<h1><%= @list.name %></h1>
-<%= button_to 'delete list', list_path(@list), method: :delete, class: 'list__form--destroy button' %>
+<div class="list__nav">
+  <h1><%= @list.name %></h1>
+  <%= button_to 'Delete List', list_path(@list), method: :delete, class: 'list__form--destroy button' %>
+</div>
 
 <%= form_for([@list, @task]) do |f| %>
   <fieldset>
