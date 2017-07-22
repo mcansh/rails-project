@@ -8,4 +8,4 @@ First, install the dependencies:
 
 Now, start the server:
 	
-	$ rails s
+	$ foreman start -f Procfile.dev
