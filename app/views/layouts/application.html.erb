@@ -8,13 +8,23 @@
   </head>
 
   <body>
-    <%= content_tag(:p, flash[:notice], :id => "flash_notice") if flash[:notice] %>
-    <%= content_tag(:p, flash[:error], :id => "flash_error") if flash[:error] %>
-    <%= content_tag(:p, flash[:alert], :id => "flash_alert") if flash[:alert] %>
 
     <% if current_user %>
       <h1>Hi, <%= current_user.username %>!</h1>
       <%= link_to "Sign out", signout_path %>
+    <% if flash[:error] %>
+      <ul class="flash">
+        <% flash[:error].each do |message| %>
+          <li class="error"><%= message.html_safe %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if flash[:notice] %>
+      <ul class="flash">
+        <% flash[:notice].each do |message| %>
+          <li class="notice"><%= message.html_safe %></li>
+        <% end %>
+      </ul>
     <% end %>
 
     <%= yield %>
