@@ -1,5 +1,5 @@
 <h1><%= @list.name %></h1>
-<%= button_to 'delete list', list_path(@list), method: :delete, class: 'list__form--destroy' %>
+<%= button_to 'delete list', list_path(@list), method: :delete, class: 'list__form--destroy button' %>
 
 <%= form_for([@list, @task]) do |f| %>
   <fieldset>
@@ -13,5 +13,3 @@
 <ul class="task__list">
   <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
 </ul>
-
-<% asset_pack_path 'markTaskAsComplete.js' %>
