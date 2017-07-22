@@ -5,7 +5,11 @@
 .task__list--item {
   display: flex;
   align-items: center;
+  margin-bottom: 1rem;
   form {
-    flex-grow: 1
+    flex-grow: 1;
+    &:last-of-type {
+      text-align: right;
+    }
   }
 }

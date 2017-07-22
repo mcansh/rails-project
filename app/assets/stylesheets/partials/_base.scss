@@ -20,6 +20,7 @@ a {
 }
 
 a:not(.button) {
+  display: table;
   &:after {
     content: '';
     width: 100%;
