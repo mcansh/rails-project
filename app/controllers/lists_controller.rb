@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :set_list
   def index
     @list = List.new
-    @lists = List.all
+    @lists = current_user.shared_lists.all
   end
 
   def show
@@ -33,7 +33,7 @@ class ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-    flash[:notice] = ['#{@list.name} updated!']
+    flash[:notice] = ['List updated!']
     redirect_to @list
   end
 
