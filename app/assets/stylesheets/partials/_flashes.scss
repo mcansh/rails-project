@@ -2,9 +2,9 @@
   width: 100%;
   margin-bottom: 2rem;
   .error {
-    color: #ff3a30;
+    color: $error;
   }
   .notice {
-    color: #32CCBC;
+    color: $success;
   }
 }
