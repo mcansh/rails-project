@@ -3,15 +3,22 @@
   <head>
     <title>TASK</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <div class="branding">
+        <h1><%= link_to 'TASK', root_path %></h1>
+      </div>
+      <% if current_user %>
+        <h1>Hi, <%= current_user.username %>!</h1>
+        <%= link_to "Sign out", signout_path %>
+      <% else %>
+        <%= link_to "Sign in", signin_path %>
+      <% end %>
+    </header>
 
-    <% if current_user %>
-      <h1>Hi, <%= current_user.username %>!</h1>
-      <%= link_to "Sign out", signout_path %>
     <% if flash[:error] %>
       <ul class="flash">
         <% flash[:error].each do |message| %>
