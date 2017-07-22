@@ -22,23 +22,5 @@ class List < ApplicationRecord
     end
   end
   # dynamic definition
-  permissions_for :shared_list, :edit, :view, :destroy
-
-  def editable_by?(user)
-    shared_list = self.shared_lists.find_by(user: user)
-    if !shared_list
-      return false
-    else
-      shared_list.editable?
-    end
-  end
-
-  def viewable_by?(user)
-    shared_list = self.shared_lists.find_by(user: user)
-    if !shared_list
-      return false
-    else
-      shared_list.viewable?
-    end
-  end
+  permissions_for :shared_lists, :edit, :view, :destroy
 end
