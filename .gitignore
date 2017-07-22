@@ -12,21 +12,18 @@
 /db/*.sqlite3-journal
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
-!/log/.keep
-!/tmp/.keep
-
-/node_modules
-/yarn-error.log
+*log
+node_modules/
+tmp/
 
 .byebug_history
 
-# macOS
-.DS_Store
-
-
-.env
+# Ignore application configuration
+/config/application.yml
+/public/assets
 /public/packs
 /public/packs-test
 /node_modules
+
+.DS_Store
+*.env
