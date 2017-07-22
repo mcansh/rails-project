@@ -1,0 +1,40 @@
+form h1 {
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .field_with_errors input {
+    border-color: $error;
+  }
+
+  input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #cdcdd2;
+    &:focus {
+      border-color: $main;
+    }
+  }
+}
+
+button, .button {
+  box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+  background: $main;
+  color: white;
+  appearance: none;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  font-size: 1rem;
+}

@@ -1,22 +1,25 @@
-<h1>Signup!</h1>
 <%= form_for(@user) do |f| %>
+  <h1>Sign Up</h1>
   <fieldset>
     <%= f.label :name %>
-    <%= f.text_field :name, placeholder: 'First Last' %>
+    <%= f.text_field :name, value: @user.name %>
   </fieldset>
   <fieldset>
     <%= f.label :username %>
-    <%= f.text_field :username, placeholder: 'firstlast' %>
+    <%= f.text_field :username, value: @user.username %>
   </fieldset>
   <fieldset>
     <%= f.label :email %>
-    <%= f.email_field :email, placeholder: 'first@last.com'  %>
+    <%= f.email_field :email, value: @user.email %>
   </fieldset>
   <fieldset>
     <%= f.label :password %>
-    <%= f.password_field :password, placeholder: 'password'  %>
+    <%= f.password_field :password %>
   </fieldset>
   <fieldset>
-    <%= f.submit %>
+    <%= f.button 'Sign Up' %>
   </fieldset>
 <% end %>
+
+<p>Already have an account? <%= link_to 'Sign in', signin_path %>.</p>
+<%= link_to "Sign up with GitHub", '/auth/github' %>

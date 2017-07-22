@@ -1,0 +1,12 @@
+$main: #0474F3;
+$error: #ff3a30;
+$success: #06b622;
+
+@import "partials/base";
+@import "partials/flashes";
+@import "partials/forms";
+@import "partials/header";
+@import "lists";
+@import "sessions";
+@import "tasks";
+@import "users";

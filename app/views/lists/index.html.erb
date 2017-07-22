@@ -1,7 +1,12 @@
 <%= form_for(@list) do |f| %>
-  <%= f.text_field :name, placeholder: (@list.errors.full_messages_for(:name).first || "Create New List") %>
-  <%= f.submit :style => "display: none" %>
+  <fieldset>
+    <%= f.text_field :name, placeholder: "Create New List" %>
+  </fieldset>
+  <fieldset>
+    <%= f.submit :style => "display: none" %>
+  <fieldset>
 <% end %>
+
 <% @lists.each do |list| %>
   <div>
     <%= link_to list.name, list %>

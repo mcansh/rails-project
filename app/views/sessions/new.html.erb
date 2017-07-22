@@ -1,16 +1,16 @@
-<h1>Sign in!</h1>
 <%= form_tag(sessions_path) do %>
+  <h1>Sign In</h1>
   <fieldset>
     <%= label_tag :email, 'Email or Username' %>
-    <%= text_field_tag :email, '', placeholder: 'first@last.com or firstlast'  %>
+    <%= text_field_tag :email %>
   </fieldset>
   <fieldset>
     <%= label_tag :password %>
-    <%= password_field_tag :password, '', placeholder: 'password'  %>
+    <%= password_field_tag %>
   </fieldset>
   <fieldset>
-    <%= submit_tag %>
+    <%= button_tag 'Sign In' %>
   </fieldset>
 
-  <%= link_to "Login with GitHub", '/auth/github' %>
 <% end %>
+<%= link_to "Sign in with GitHub", '/auth/github' %>
