@@ -10,6 +10,4 @@
 import markComplete from './markTaskAsComplete';
 import { $$ } from './bling';
 
-console.log('Hello World from Webpacker');
-
 $$('input[type="checkbox"]').on('change', markComplete);
