@@ -10,8 +10,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path
     else
-      flash[:notice] = @user.errors.messages
-      render 'users/new'
+      flash[:error] = @user.errors.full_messages
+      render :new
     end
   end
 

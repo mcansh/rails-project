@@ -8,7 +8,8 @@ class ListsController < ApplicationController
   def show
     @list = List.find_by(id: params[:id])
     if !can_current_user?(:view, @list)
-      redirect_to root_path, notice: "You can't view that!"
+      flash[:error] = ['You can\'t view that!']
+      redirect_to root_path
     end
     @task = Task.new
   end
@@ -25,13 +26,15 @@ class ListsController < ApplicationController
 
   def edit
     if !can_current_user?(:edit, @list)
-      redirect_to @list, notice: "You can't edit that!"
+      flash[:error] = ['You can\'t edit that!']
+      redirect_to @list
     end
   end
 
   def update
     @list.update(list_params)
-    redirect_to @list, notice: "#{@list.name} updated!"
+    flash[:notice] = ['#{@list.name} updated!']
+    redirect_to @list
   end
 
   def destroy
