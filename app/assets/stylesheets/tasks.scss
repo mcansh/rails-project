@@ -8,6 +8,9 @@
   margin-bottom: 1rem;
   form {
     flex-grow: 1;
+    label {
+      cursor: pointer;
+    }
     &:last-of-type {
       text-align: right;
     }
