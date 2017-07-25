@@ -8,6 +8,9 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import markComplete from './markTaskAsComplete';
-import { $$ } from './bling';
+import deleteList from './deleteList';
+import { $, $$ } from './bling';
+
 
 $$('input[type="checkbox"]').on('change', markComplete);
+$$('.list__form--destroy').on('click', deleteList);
