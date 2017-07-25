@@ -19,7 +19,6 @@
   <fieldset>
     <%= f.button 'Sign Up' %>
   </fieldset>
+  <p>Already have an account? <%= link_to 'Sign in', signin_path %>.</p>
+  <%= link_to "Sign up with GitHub", '/auth/github' %>
 <% end %>
-
-<p>Already have an account? <%= link_to 'Sign in', signin_path %>.</p>
-<%= link_to "Sign up with GitHub", '/auth/github' %>

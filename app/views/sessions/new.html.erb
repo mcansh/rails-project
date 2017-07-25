@@ -11,6 +11,6 @@
   <fieldset>
     <%= button_tag 'Sign In' %>
   </fieldset>
-
+  <p>Don't already have an account? <%= link_to 'Sign up', signup_path %>.</p>
+  <%= link_to "Sign in with GitHub", '/auth/github' %>
 <% end %>
-<%= link_to "Sign in with GitHub", '/auth/github' %>
