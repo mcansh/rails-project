@@ -6,5 +6,7 @@
     </label>
   <% end %>
 
-  <%= button_to 'Delete Task', list_task_path(task.list, task), method: :delete, class: 'task__form--destroy button' %>
+  <% if @list.user_id == current_user.id %>
+    <%= button_to 'Delete Task', list_task_path(task.list, task), method: :delete, class: 'task__form--destroy button' %>
+  <% end %>
 </li>

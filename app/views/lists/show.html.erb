@@ -1,11 +1,16 @@
 <div class="list__nav">
   <h1><%= @list.name %></h1>
-  <%= button_to 'Delete List', list_path(@list), method: :delete, class: 'list__form--destroy button' %>
+  <% if @list.user_id == current_user.id %>
+    <%= button_to 'Delete List', list_path(@list), method: :delete, class: 'list__form--destroy button' %>
+  <% end %>
 </div>
 
 <%= form_for([@list, @task]) do |f| %>
   <fieldset>
     <%= f.text_field :description, placeholder: "Create New Task" %>
+  </fieldset>
+  <fieldset>
+    <%= f.text_field :users, placeholder: "Assign a user" %>
   </fieldset>
   <fieldset>
     <%= f.submit :style => "display: none" %>
