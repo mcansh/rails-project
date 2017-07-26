@@ -3,10 +3,6 @@ class ApplicationController < ActionController::Base
   before_action :login_required
 
   private
-    def can_current_user?(action, object)
-      object.send("#{action}able_by?", current_user)
-    end
-
     def login(user)
       session[:user_id] = user.id # Logging them in as a user.
     end

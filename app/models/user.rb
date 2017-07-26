@@ -17,6 +17,6 @@ class User < ApplicationRecord
     end
   end
 
-  has_many :shared_lists
-  has_many :lists, :through => :shared_lists
+  has_many :lists
+  has_many :tasks, :through => :lists
 end
