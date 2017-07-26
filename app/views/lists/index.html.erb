@@ -4,11 +4,11 @@
   </fieldset>
   <fieldset>
     <%= f.submit :style => "display: none" %>
-  <fieldset>
+  </fieldset>
 <% end %>
 
 <% @lists.each do |list| %>
-  <div>
-    <%= link_to list.list.name, list.list %>
+  <div class="list">
+    <%= link_to list.name, list %>
   </div>
 <% end %>

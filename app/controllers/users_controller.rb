@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
   def new
-    @user = User.new
+    if !logged_in?
+      @user = User.new
+    else
+      redirect_to root_path
+    end
   end
 
   def create
