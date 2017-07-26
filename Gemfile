@@ -54,6 +54,7 @@ group :development do
 end
 
 group :production do
+  # Use postgres as the production database for Active Record
   gem "pg"
 end
 
