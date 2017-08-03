@@ -3,6 +3,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: [:update, :destroy]
   def create
     @task = @list.tasks.build(task_params)
+    @task.user_id = current_user.id
+
     if @task.save
       redirect_to @list
     else
@@ -22,7 +24,7 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:description, :status)
+      params.require(:task).permit(:description, :status, :user)
     end
 
     def set_list
