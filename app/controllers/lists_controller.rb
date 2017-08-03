@@ -2,7 +2,7 @@ class ListsController < ApplicationController
   before_action :set_list
   def index
     @list = List.new
-    @lists = List.all
+    @lists = @current_user.lists
   end
 
   def show
