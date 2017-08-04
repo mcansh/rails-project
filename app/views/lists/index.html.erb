@@ -1,6 +1,6 @@
 <%= form_for(@list) do |f| %>
   <fieldset>
-    <%= f.text_field :name, placeholder: "Create New List" %>
+    <%= f.text_field :name, placeholder: "Create New List", autofocus: true %>
   </fieldset>
   <fieldset>
     <%= f.submit :style => "display: none" %>

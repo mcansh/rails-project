@@ -8,7 +8,7 @@
 
 <%= form_for([@list, @task]) do |f| %>
   <fieldset>
-    <%= f.text_field :description, placeholder: "Create New Task" %>
+    <%= f.text_field :description, placeholder: "Create New Task", autofocus: true %>
   </fieldset>
   <fieldset>
     <%= f.submit :style => "display: none" %>
