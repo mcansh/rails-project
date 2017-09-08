@@ -3,12 +3,20 @@ class ListsController < ApplicationController
   def index
     @list = List.new
     @lists = @current_user.lists
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @lists }
+    end
   end
 
   def show
     @list = List.find_by(id: params[:id])
     if @list.user_id === @current_user.id
       @task = Task.new
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @list }
+      end
     else
       flash[:error] = ["List not found"]
       redirect_to root_path

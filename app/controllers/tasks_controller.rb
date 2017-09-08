@@ -12,6 +12,14 @@ class TasksController < ApplicationController
     end
   end
 
+  def show
+    @task = Task.find_by(id: params[:id])
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @task }
+    end
+  end
+
   def update
     @task.update(task_params)
     redirect_to @task.list
