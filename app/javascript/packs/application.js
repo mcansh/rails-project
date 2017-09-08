@@ -9,7 +9,7 @@
 
 import markComplete from './markTaskAsComplete';
 import deleteList from './deleteList';
-import { $, $$ } from './bling';
+import { $$ } from './bling';
 
 
 $$('input[type="checkbox"]').on('change', markComplete);
