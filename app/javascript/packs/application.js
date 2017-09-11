@@ -12,5 +12,9 @@ import deleteList from './deleteList';
 import { $$ } from './bling';
 
 
+if ($$('input[type="checkbox"]')) {
 $$('input[type="checkbox"]').on('change', markComplete);
+}
+if ($$('.list__form--destroy')) {
 $$('.list__form--destroy').on('click', deleteList);
+}
