@@ -10,7 +10,6 @@ function toggleStatus(e) {
     authenticity_token: authenticityToken,
   };
   const url = form.action;
-  console.log(url);
   fetch(url, {
     method: 'PATCH',
     headers: {
