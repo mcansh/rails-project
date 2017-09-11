@@ -1,5 +1,5 @@
 {
-  "name": "Rails-Project",
+  "name": "rails-project",
   "private": true,
   "scripts": {
     "dev": "foreman start -f Procfile.dev",
