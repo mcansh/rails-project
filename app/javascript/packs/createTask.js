@@ -22,7 +22,7 @@ function createTask(e) {
     credentials: 'same-origin',
     body: JSON.stringify(body),
   })
-    .then(description.value = '')
+    .then(this.reset())
     .then(getListTasks('3'))
     .catch(err => console.error(err));
 }
