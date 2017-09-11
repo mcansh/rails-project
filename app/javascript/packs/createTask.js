@@ -4,12 +4,12 @@ import getListTasks from './getListTasks';
 function createTask(e) {
   e.preventDefault();
   const description = $('#task_description').value;
-  const authenticity_token = this.querySelector('[name="authenticity_token"]').value;
+  const authenticityToken = this.querySelector('[name="authenticity_token"]').value;
   const body = {
     task: {
       description,
     },
-    authenticity_token,
+    authenticity_token: authenticityToken,
   };
   if (!description) return;
   const url = this.action;
