@@ -7,8 +7,15 @@ input[type="checkbox"] {
   display: none;
 }
 
+input[type="checkbox"] + label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
 input[type="checkbox"] + label::before {
   content: '⬜';
+  margin-right: 10px;
 }
 
 input:checked + label {
@@ -31,6 +38,18 @@ input:checked + label {
   margin-bottom: 2em;
   h1 {
     flex-grow: 1
+  }
+  &--buttons {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 500px) {
+  .list__nav {
+    flex-direction: column;
+    h1 {
+      margin-bottom: 10px;
+    }
   }
 }
 
