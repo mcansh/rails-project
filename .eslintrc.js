@@ -4,4 +4,7 @@ module.exports = {
     browser: true,
   },
   plugins: ['import'],
+  rules: {
+    "no-console": 0,
+  }
 };
