@@ -3,27 +3,28 @@ import getListTasks from './getListTasks';
 
 function createTask(e) {
   e.preventDefault();
-  const description = $('#task_description');
+  const description = $('#task_description').value;
+  const authenticity_token = this.querySelector('[name="authenticity_token"]').value;
+  const body = {
+    task: {
+      description,
+    },
+    authenticity_token,
+  };
   if (!description) return;
   const url = this.action;
-  const CSRF = $('meta[name="csrf-token"]');
-  if (!CSRF) {
-    console.error('no csrf token 😱');
-    return;
-  }
   fetch(url, {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
-      'X-Requested-With': 'XMLHttpRequest',
-      'X-CSRF-Token': CSRF.content,
     },
     credentials: 'same-origin',
-    body: JSON.stringify({ description: description.value }),
+    body: JSON.stringify(body),
   })
     .then(description.value = '')
-    .then(getListTasks('1'));
+    .then(getListTasks('3'))
+    .catch(err => console.error(err));
 }
 
 export default createTask;
