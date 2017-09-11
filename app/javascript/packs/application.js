@@ -11,7 +11,9 @@ import { $, $$ } from './bling';
 import markComplete from './markTaskAsComplete';
 import deleteList from './deleteList';
 import createTask from './createTask';
+import consoleStyles from './log';
 
+console.log('%c Your productivity just increased 9001% 🚀', consoleStyles);
 
 if ($$('input[type="checkbox"]')) {
   $$('input[type="checkbox"]').on('change', markComplete);
