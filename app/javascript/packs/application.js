@@ -8,7 +8,7 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import { $, $$ } from './bling';
-import markComplete from './markTaskAsComplete';
+import toggleStatus from './toggleStatus';
 import deleteList from './deleteList';
 import createTask from './createTask';
 import consoleStyles from './log';
@@ -16,7 +16,7 @@ import consoleStyles from './log';
 console.log('%c Your productivity just increased 9001% 🚀', consoleStyles);
 
 if ($$('input[type="checkbox"]')) {
-  $$('input[type="checkbox"]').on('change', markComplete);
+  $$('input[type="checkbox"]').on('change', toggleStatus);
 }
 if ($$('.list__form--destroy')) {
   $$('.list__form--destroy').on('click', deleteList);
