@@ -22,7 +22,6 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
-    redirect_to @task.list
   end
 
   def destroy
