@@ -7,14 +7,18 @@
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
 
+import { $, $$ } from './bling';
 import markComplete from './markTaskAsComplete';
 import deleteList from './deleteList';
-import { $$ } from './bling';
+import createTask from './createTask';
 
 
 if ($$('input[type="checkbox"]')) {
-$$('input[type="checkbox"]').on('change', markComplete);
+  $$('input[type="checkbox"]').on('change', markComplete);
 }
 if ($$('.list__form--destroy')) {
-$$('.list__form--destroy').on('click', deleteList);
+  $$('.list__form--destroy').on('click', deleteList);
+}
+if ($('#new_task')) {
+  $('#new_task').on('submit', createTask);
 }
