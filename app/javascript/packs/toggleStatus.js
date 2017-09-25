@@ -1,8 +1,12 @@
+import { $ } from './bling';
+
 function toggleStatus(e) {
   e.preventDefault();
-  const { checked } = this;
-  const form = this.closest('form');
-  const authenticityToken = form.querySelector('[name="authenticity_token"]').value;
+  const target = e.target;
+  const { checked } = target;
+
+  const form = target.closest('form');
+  const authenticityToken = $('[name="csrf-token"]').content;
   const body = {
     task: {
       status: checked,
@@ -18,8 +22,7 @@ function toggleStatus(e) {
     },
     credentials: 'same-origin',
     body: JSON.stringify(body),
-  })
-    .catch(err => console.error(err));
+  }).catch(err => console.error(err));
 }
 
 export default toggleStatus;

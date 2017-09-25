@@ -15,12 +15,13 @@ import consoleStyles from './log';
 
 console.log('%c Your productivity just increased 9001% 🚀', consoleStyles);
 
-if ($$('input[type="checkbox"]')) {
-  $$('input[type="checkbox"]').on('change', toggleStatus);
+if ($('.task__list')) {
+  $('.task__list').on('change', toggleStatus);
 }
 if ($$('.list__form--destroy')) {
   $$('.list__form--destroy').on('click', deleteList);
 }
+
 if ($('#new_task')) {
   $('#new_task').on('submit', createTask);
 }
