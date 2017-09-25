@@ -15,7 +15,6 @@ class TasksController < ApplicationController
   def show
     @task = Task.find_by(id: params[:id])
     respond_to do |format|
-      format.html { render :show }
       format.json { render json: @task }
     end
   end
