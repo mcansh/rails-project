@@ -44,7 +44,6 @@ class ListsController < ApplicationController
   def update
     @list.update(list_params)
     flash[:notice] = ['List updated!']
-    redirect_to @list
   end
 
   # def destroy
