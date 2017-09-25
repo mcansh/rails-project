@@ -5,5 +5,5 @@
       <span><%= task.description %></span>
     </label>
   <% end %>
-  <%= button_to 'Delete Task', list_task_path(task.list, task), method: :delete, class: 'task__form--destroy button' %>
+  <button class="button task__form--destroy" id="delete__task" data-task-id="<%= task.id %>" data-list-id="<%= @list.id %>">Delete Task</button>
 </li>
