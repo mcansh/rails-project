@@ -1,17 +1,16 @@
 import { $ } from './bling';
-import getListTasks from './getListTasks';
 
 function createTask(e) {
   e.preventDefault();
-  const description = $('#task_description').value;
+  const taskDescription = $('#task_description').value;
   const authenticityToken = this.querySelector('[name="authenticity_token"]').value;
   const body = {
     task: {
-      description,
+      description: taskDescription,
     },
     authenticity_token: authenticityToken,
   };
-  if (!description) return;
+  if (!taskDescription) return;
   const url = this.action;
   fetch(url, {
     method: 'POST',
@@ -23,7 +22,25 @@ function createTask(e) {
     body: JSON.stringify(body),
   })
     .then(this.reset())
-    .then(getListTasks('3'))
+    .then(blob => blob.json())
+    .then((data) => {
+      const tasks = data.tasks;
+      const lastIndex = tasks.length - 1;
+      const task = tasks[lastIndex];
+      const { description, id } = task;
+      const { id: listId } = data;
+
+      console.log(task);
+
+      $('.task__list').innerHTML += `
+        <li class="task__list--item">
+          <form class="edit_task" id="edit_task_${id}" action="/lists/${listId}/tasks/${id}" method="post">
+            <input id="task-${id}" type="checkbox" value="1" name="task[status]" />
+            <label><span>${description}</span></label>
+          </form>
+          <button class="button task__form--destroy" id="delete__task" data-task-id="${id}" data-list-id="${listId}">Delete Task</button>
+        </li>`;
+    })
     .catch(err => console.error(err));
 }
 
