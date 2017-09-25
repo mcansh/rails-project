@@ -47,15 +47,15 @@ class ListsController < ApplicationController
     redirect_to @list
   end
 
-  def destroy
-    if @list.user_id == current_user.id
-      @list.destroy
-      flash[:notice] = ['List Deleted!']
-      redirect_to root_path
-    else
-      flash[:error] = ["You don't have permission to delete that!"]
-    end
-  end
+  # def destroy
+  #   if @list.user_id == current_user.id
+  #     @list.destroy
+  #     flash[:notice] = ['List Deleted!']
+  #     redirect_to root_path
+  #   else
+  #     flash[:error] = ["You don't have permission to delete that!"]
+  #   end
+  # end
 
   private
     def list_params # strong params
