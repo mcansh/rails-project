@@ -9,7 +9,7 @@
 
 import { $, $$ } from './bling';
 import toggleStatus from './toggleStatus';
-import deleteList from './deleteList';
+// import deleteList from './deleteList';
 import createTask from './createTask';
 import consoleStyles from './log';
 
