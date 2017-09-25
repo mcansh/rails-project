@@ -1,8 +1,8 @@
 <div class="list__nav">
-  <h1><%= @list.name %></h1>
+  <input id="list__name" type="text" readonly value="<%= @list.name %>" />
   <div class="list__nav--buttons">
     <% if @list.user_id == current_user.id %>
-      <%= link_to 'Edit List', edit_list_path(@list), class: 'button' %>
+      <%= link_to 'Edit List', edit_list_path(@list), class: 'button', id: 'edit__button' %>
       <%= button_to 'Delete List', list_path(@list), method: :delete, class: 'list__form--destroy button' %>
     <% end %>
   </div>
@@ -17,8 +17,6 @@
   </fieldset>
 <% end %>
 
-<% if @list.tasks.any? %>
-  <ul class="task__list">
-    <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
-  </ul>
-<% end %>
+<ul class="task__list">
+  <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
+</ul>
