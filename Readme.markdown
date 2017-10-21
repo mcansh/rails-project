@@ -1,15 +1,18 @@
 # Rails Project
 [![Build Status](https://travis-ci.com/mcansh/rails-project.svg?token=siCfs9PByWfP2yk5xhvY&branch=master)](https://travis-ci.com/mcansh/rails-project)
 
-A Todo list
-
+A Todo list application
 
 ## Running Locally
 
 First, install the dependencies:
 
-	$ bundle install
+	$ bundle install && yarn
+	
+Migrate the database:
+
+	$ rails db:migrate
 
 Now, start the server:
 	
-	$ foreman start -f Procfile.dev
+	$ yarn dev
