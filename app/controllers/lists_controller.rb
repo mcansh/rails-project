@@ -23,6 +23,11 @@ class ListsController < ApplicationController
     end
   end
 
+  def todo
+    @lists = @current_user.show_incomplete
+    render :todo
+  end
+
   def create
     @list = List.new(list_params)
     @list.user_id = current_user.id

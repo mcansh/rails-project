@@ -19,4 +19,9 @@ class User < ApplicationRecord
 
   has_many :lists
   has_many :tasks, :through => :lists
+
+  def show_incomplete
+    tasks = User.find_by(id: id).tasks
+    tasks = tasks.where.not(status: true)
+  end
 end
