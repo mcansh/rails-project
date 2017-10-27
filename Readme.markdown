@@ -8,11 +8,14 @@ A Todo list application
 First, install the dependencies:
 
 	$ bundle install && yarn
-	
+
 Migrate the database:
 
 	$ rails db:migrate
 
 Now, start the server:
-	
+
 	$ yarn dev
+
+## License
+Code and documentation is licenced under [MIT](license).
