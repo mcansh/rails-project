@@ -33,7 +33,7 @@ class ListsController < ApplicationController
 
   def edit
     if @list.user_id != current_user.id
-      flash[:error] = ["You can't edit that!"]
+      flash[:error] = ["You don't have permission to edit that!"]
       redirect_to @list
     end
   end
@@ -45,7 +45,7 @@ class ListsController < ApplicationController
   end
 
   def destroy
-    if @list.user_id == current_user.id
+    if @list.user_id === current_user.id
       @list.destroy
       redirect_to root_path
     else
