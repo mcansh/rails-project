@@ -1,0 +1,9 @@
+<div class="list__nav">
+  <h1>Tasks todo</h1>
+</div>
+
+<% if @lists.any? %>
+  <% @lists.each do |list| %>
+    <p><%= list.description %></p>
+  <% end %>
+<% end %>
