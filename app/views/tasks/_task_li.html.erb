@@ -6,4 +6,5 @@
     </label>
   <% end %>
   <%= button_to 'Delete Task', list_task_path(task.list, task), method: :delete, class: 'task__form--destroy button' %>
+  <%= link_to 'View Task', list_task_path(task.list, task), class: 'button' %>
 </li>
