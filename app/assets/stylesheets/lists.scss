@@ -2,12 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass here: http://sass-lang.com/
 
-
-input[type="checkbox"] {
+input[type='checkbox'] {
   display: none;
 }
 
-input[type="checkbox"] + label::before {
+input[type='checkbox'] + label::before {
   content: '⬜';
 }
 
@@ -23,6 +22,7 @@ input:checked + label {
 .task__list {
   list-style: none;
   padding: 0;
+  margin-top: 1rem;
 }
 
 .list__nav {
@@ -30,7 +30,7 @@ input:checked + label {
   align-items: center;
   margin-bottom: 2em;
   h1 {
-    flex-grow: 1
+    flex-grow: 1;
   }
 }
 

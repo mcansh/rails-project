@@ -7,6 +7,20 @@ form p {
   margin-bottom: 5px;
 }
 
+input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #cdcdd2;
+  &:focus {
+    border-color: $main;
+  }
+}
+
+.field_with_errors input {
+  border-color: $error;
+}
+
 fieldset {
   border: none;
   padding: 0;
@@ -16,25 +30,12 @@ fieldset {
     display: block;
     margin-bottom: 0.25rem;
   }
-
-  .field_with_errors input {
-    border-color: $error;
-  }
-
-  input {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid #cdcdd2;
-    &:focus {
-      border-color: $main;
-    }
-  }
 }
 
-button, .button {
+button,
+.button {
   display: block;
-  box-shadow: 0 4px 6px rgba(50,50,93,0.11), 0 1px 3px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
   background: $main;
   color: white;
   appearance: none;
@@ -45,9 +46,9 @@ button, .button {
   transition: 300ms all ease-in-out;
   cursor: pointer;
   &:hover {
-    box-shadow: 0 8px 12px rgba(50,50,93,0.11), 0 2px 6px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 12px rgba(50, 50, 93, 0.11), 0 2px 6px rgba(0, 0, 0, 0.08);
   }
-  &:nth-child(n+2) {
+  &:nth-child(n + 2) {
     margin-left: 10px;
   }
 }
