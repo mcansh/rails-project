@@ -11,8 +11,11 @@
     label {
       cursor: pointer;
     }
-    &:last-of-type input[type="submit"] {
+    &:last-of-type input[type='submit'] {
       margin-left: auto;
     }
+  }
+  &:last-of-type {
+    display: none;
   }
 }

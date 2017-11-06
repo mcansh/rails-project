@@ -7,9 +7,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(id: params[:id])
-    if @list.user_id === @current_user.id
-      @task = Task.new
-    else
+    if @list.user_id != @current_user.id
       flash[:error] = ["List not found"]
       redirect_to root_path
     end
@@ -33,19 +31,19 @@ class ListsController < ApplicationController
 
   def edit
     if @list.user_id != current_user.id
-      flash[:error] = ["You can't edit that!"]
+      flash[:error] = ["You don't have permission to edit that!"]
       redirect_to @list
     end
   end
 
   def update
     @list.update(list_params)
-    flash[:notice] = ['List updated!']
+    flash[:notice] = ["#{@list.name} updated!"]
     redirect_to @list
   end
 
   def destroy
-    if @list.user_id == current_user.id
+    if @list.user_id === current_user.id
       @list.destroy
       redirect_to root_path
     else
@@ -55,7 +53,7 @@ class ListsController < ApplicationController
 
   private
     def list_params # strong params
-      params.require(:list).permit(:name, :user)
+      params.require(:list).permit(:name, :user, tasks_attributes: [:description, :user_id])
     end
 
     def set_list
