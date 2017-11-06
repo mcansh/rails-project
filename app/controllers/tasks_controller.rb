@@ -8,6 +8,7 @@ class TasksController < ApplicationController
     if @task.save
       redirect_to @list
     else
+      flash[:error] = @task.errors.full_messages
       render "lists/show"
     end
   end
@@ -28,7 +29,7 @@ class TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:description, :status, :user)
+      params.require(:task).permit(:description, :status, :user_id)
     end
 
     def set_list
