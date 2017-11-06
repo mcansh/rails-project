@@ -40,7 +40,7 @@ class ListsController < ApplicationController
 
   def update
     @list.update(list_params)
-    flash[:notice] = ['List updated!']
+    flash[:notice] = ["#{@list.name} updated!"]
     redirect_to @list
   end
 
