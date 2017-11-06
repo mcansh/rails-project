@@ -7,9 +7,7 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find_by(id: params[:id])
-    if @list.user_id === @current_user.id
-      @task = Task.new
-    else
+    if @list.user_id != @current_user.id
       flash[:error] = ["List not found"]
       redirect_to root_path
     end
@@ -55,7 +53,7 @@ class ListsController < ApplicationController
 
   private
     def list_params # strong params
-      params.require(:list).permit(:name, :user)
+      params.require(:list).permit(:name, :user, tasks_attributes: [:description, :user_id])
     end
 
     def set_list
