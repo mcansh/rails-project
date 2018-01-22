@@ -1,0 +1,11 @@
+<%= form_for(@list) do |f| %>
+  <fieldset>
+    <%= f.text_field :name, placeholder: "Create New List", autofocus: true %>
+  </fieldset>
+<% end %>
+
+<% @lists.each do |list| %>
+  <div class="list">
+    <%= link_to list.name, list %>
+  </div>
+<% end %>

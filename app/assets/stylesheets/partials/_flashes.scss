@@ -1,0 +1,10 @@
+.flash {
+  width: 100%;
+  margin-bottom: 2rem;
+  .error {
+    color: $error;
+  }
+  .notice {
+    color: $success;
+  }
+}

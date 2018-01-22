@@ -1,0 +1,21 @@
+// Place all the styles related to the tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass here: http://sass-lang.com/
+
+.task__list--item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+  form {
+    flex-grow: 1;
+    label {
+      cursor: pointer;
+    }
+    &:last-of-type input[type='submit'] {
+      margin-left: auto;
+    }
+  }
+  &:last-of-type {
+    display: none;
+  }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TASK</title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <div class="branding">
+        <%= link_to 'TASK', root_path %>
+      </div>
+      <% if current_user %>
+        <h1>Hi, <%= current_user.username %>!</h1>
+        <%= link_to "Sign out", signout_path %>
+      <% else %>
+        <%= link_to "Sign in", signin_path %>
+      <% end %>
+    </header>
+
+    <% if flash[:error] %>
+      <ul class="flash">
+        <% flash[:error].each do |message| %>
+          <li class="error"><%= message.html_safe %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if flash[:notice] %>
+      <ul class="flash">
+        <% flash[:notice].each do |message| %>
+          <li class="notice"><%= message.html_safe %></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= yield %>
+    <%= javascript_pack_tag 'application' %>
+  </body>
+</html>

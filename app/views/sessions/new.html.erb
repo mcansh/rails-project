@@ -1,0 +1,17 @@
+<%= form_tag(sessions_path) do %>
+  <h1>Sign In</h1>
+  <fieldset>
+    <%= label_tag :email, 'Email or Username' %>
+    <%= text_field_tag :email, '', autofocus: true %>
+  </fieldset>
+  <fieldset>
+    <%= label_tag :password %>
+    <%= password_field_tag %>
+  </fieldset>
+  <fieldset>
+    <%= button_tag 'Sign In' %>
+  </fieldset>
+  <p>Don't already have an account? <%= link_to 'Sign up', signup_path %>.</p>
+  <%= link_to "Sign in with GitHub", '/auth/github' %>
+  <%= link_to "Sign up with Twitter", '/auth/twitter' %>
+<% end %>

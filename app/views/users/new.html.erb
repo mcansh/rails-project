@@ -1,0 +1,25 @@
+<%= form_for(@user) do |f| %>
+  <h1>Sign Up</h1>
+  <fieldset>
+    <%= f.label :name %>
+    <%= f.text_field :name, value: @user.name, autofocus: true %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :username %>
+    <%= f.text_field :username, value: @user.username %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :email %>
+    <%= f.email_field :email, value: @user.email %>
+  </fieldset>
+  <fieldset>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </fieldset>
+  <fieldset>
+    <%= f.button 'Sign Up' %>
+  </fieldset>
+  <p>Already have an account? <%= link_to 'Sign in', signin_path %>.</p>
+  <%= link_to "Sign up with GitHub", '/auth/github' %>
+  <%= link_to "Sign up with Twitter", '/auth/twitter' %>
+<% end %>
