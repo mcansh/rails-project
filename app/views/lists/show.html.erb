@@ -1,20 +1,18 @@
 <div class="list__nav">
   <input id="list__name" type="text" readonly value="<%= @list.name %>" />
   <div class="list__nav--buttons">
-    <% if @list.user_id == current_user.id %>
-      <%= link_to 'Edit List', edit_list_path(@list), class: 'button', id: 'edit__button' %>
-      <%= button_to 'Delete List', list_path(@list), method: :delete, class: 'list__form--destroy button' %>
-    <% end %>
+    <%= link_to 'Edit List', edit_list_path(@list), class: 'button', id: 'edit__button' %>
+    <%= button_to 'Delete List', list_path(@list), method: :delete, class: 'list__form--destroy button' %>
   </div>
 </div>
 
-<%= form_for([@list, @task]) do |f| %>
+<%= form_for @list do |list| %>
+  <%= list.fields_for :tasks, @list.tasks.build(id: @list.tasks.size + 1) do |task| %>
   <fieldset>
-    <%= f.text_field :description, placeholder: "Create New Task", autofocus: true %>
+    <%= task.text_field :description, placeholder: "Create New Task", autofocus: true %>
+    <%= task.hidden_field :user_id, :value => current_user.id %>
   </fieldset>
-  <fieldset>
-    <%= f.submit :style => "display: none" %>
-  </fieldset>
+  <% end %>
 <% end %>
 
 <ul class="task__list">

@@ -1,16 +1,18 @@
 import { $ } from './bling';
 
-function deleteList(e) {
+function deleteTask(e) {
   e.preventDefault();
-  const target = e.target;
-  const { taskId, listId } = target.dataset;
+  const { target: { dataset: { taskId, listId } } } = e;
 
-  const URL = `/lists/${listId}/tasks/${taskId}`;
+  const URL = `${window.location.origin}/lists/${listId}/tasks/${taskId}`;
   const authenticityToken = $('meta[name="csrf-token"]').content;
 
   const body = {
     authenticity_token: authenticityToken,
   };
+
+  console.log(URL);
+
 
   fetch(URL, {
     method: 'DELETE',
@@ -22,8 +24,8 @@ function deleteList(e) {
     body: JSON.stringify(body),
   })
     .then(data => console.log(data))
-    .then(() => target.parentElement.remove())
+    .then(() => e.target.parentElement.remove())
     .catch(err => console.error(err));
 }
 
-export default deleteList;
+export default deleteTask;

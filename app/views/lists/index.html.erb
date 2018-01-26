@@ -2,9 +2,6 @@
   <fieldset>
     <%= f.text_field :name, placeholder: "Create New List", autofocus: true %>
   </fieldset>
-  <fieldset>
-    <%= f.submit :style => "display: none" %>
-  </fieldset>
 <% end %>
 
 <% @lists.each do |list| %>

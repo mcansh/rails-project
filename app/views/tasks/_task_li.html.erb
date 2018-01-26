@@ -6,4 +6,5 @@
     </label>
   <% end %>
   <button class="button task__form--destroy" id="delete__task" data-task-id="<%= task.id %>" data-list-id="<%= @list.id %>">Delete Task</button>
+  <%= link_to 'View Task', list_task_path(task.list, task), class: 'button' %>
 </li>

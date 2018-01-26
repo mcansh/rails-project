@@ -2,7 +2,7 @@ import { $ } from './bling';
 
 function toggleStatus(e) {
   e.preventDefault();
-  const target = e.target;
+  const {target} = e;
   const { checked } = target;
 
   const form = target.closest('form');

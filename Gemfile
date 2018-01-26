@@ -24,6 +24,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'omniauth'
 gem 'omniauth-github'
+gem 'omniauth-twitter'
 
 gem 'webpacker', github: 'rails/webpacker'
 

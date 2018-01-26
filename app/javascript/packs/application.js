@@ -9,7 +9,7 @@
 
 import { $ } from './bling';
 import toggleStatus from './toggleStatus';
-// import deleteList from './deleteList';
+import deleteList from './deleteList';
 import deleteTask from './deleteTask';
 import createTask from './createTask';
 import updateListName from './updateListName';
@@ -19,7 +19,8 @@ console.log('%c Your productivity just increased 9001% 🚀', consoleStyles);
 
 if ($('.task__list')) {
   $('.task__list').on('change', toggleStatus);
-  $('.task__list').on('click', deleteTask);
+  $('.task__form--destroy').on('click', deleteTask);
+  $('.list__form--destroy button').on('click', deleteList);
 }
 
 if ($('#edit__button')) {

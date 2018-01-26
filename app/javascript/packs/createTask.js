@@ -3,6 +3,7 @@ import { $ } from './bling';
 function createTask(e) {
   e.preventDefault();
   const taskDescription = $('#task_description').value;
+  if (!taskDescription) return;
   const authenticityToken = this.querySelector('[name="authenticity_token"]').value;
   const body = {
     task: {
@@ -10,7 +11,6 @@ function createTask(e) {
     },
     authenticity_token: authenticityToken,
   };
-  if (!taskDescription) return;
   const url = this.action;
   fetch(url, {
     method: 'POST',
@@ -24,7 +24,7 @@ function createTask(e) {
     .then(this.reset())
     .then(blob => blob.json())
     .then((data) => {
-      const tasks = data.tasks;
+      const {tasks} = data;
       const lastIndex = tasks.length - 1;
       const task = tasks[lastIndex];
       const { description, id } = task;
