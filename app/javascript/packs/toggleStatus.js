@@ -3,6 +3,7 @@ import { $ } from './bling';
 const toggleStatus = e => {
   e.preventDefault();
   const { target } = e;
+  if (target.nodeName.toLowerCase() !== 'input') return;
   const { checked } = target;
 
   const form = target.closest('form');
