@@ -17,6 +17,6 @@
 
 <% if @list.tasks.any? %>
   <ul class="task__list">
-    <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
+    <%= render partial: "tasks/task_li", collection: @list.tasks, as: :task %>
   </ul>
 <% end %>
