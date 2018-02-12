@@ -19,7 +19,7 @@ console.log('%c Your productivity just increased 9001% 🚀', consoleStyles);
 
 if ($('.task__list')) {
   $('.task__list').on('change', toggleStatus);
-  $('.task__form--destroy').on('click', deleteTask);
+  $('.task__list').on('click', deleteTask);
   $('.list__form--destroy').on('click', deleteList);
 }
 
