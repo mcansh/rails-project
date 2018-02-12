@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_list
   before_action :set_task, only: [:update, :destroy]
+
   def create
     @task = @list.tasks.build(task_params)
     @task.user_id = current_user.id

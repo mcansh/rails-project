@@ -1,47 +1,53 @@
 import { $ } from './bling';
 
-function createTask(e) {
+const createTask = async e => {
+  const { target: form } = e;
   e.preventDefault();
-  const taskDescription = $('#task_description').value;
+  const taskDescription = form.querySelector('#task_description').value;
+
   if (!taskDescription) return;
-  const authenticityToken = this.querySelector('[name="authenticity_token"]').value;
+  const authenticityToken = $('[name="csrf-token"]').content;
   const body = {
-    task: {
-      description: taskDescription,
-    },
-    authenticity_token: authenticityToken,
+    description: taskDescription,
   };
-  const url = this.action;
-  fetch(url, {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json',
-      'Content-Type': 'application/json',
-    },
-    credentials: 'same-origin',
-    body: JSON.stringify(body),
-  })
-    .then(this.reset())
-    .then(blob => blob.json())
-    .then((data) => {
-      const {tasks} = data;
-      const lastIndex = tasks.length - 1;
-      const task = tasks[lastIndex];
-      const { description, id } = task;
-      const { id: listId } = data;
 
-      console.log(task);
+  const url = `${form.action}/tasks`;
 
-      $('.task__list').innerHTML += `
-        <li class="task__list--item">
-          <form class="edit_task" id="edit_task_${id}" action="/lists/${listId}/tasks/${id}" method="post">
-            <input id="task-${id}" type="checkbox" value="1" name="task[status]" />
-            <label><span>${description}</span></label>
-          </form>
-          <button class="button task__form--destroy" id="delete__task" data-task-id="${id}" data-list-id="${listId}">Delete Task</button>
-        </li>`;
-    })
-    .catch(err => console.error(err));
-}
+  try {
+    const task = await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        'x-csrf-token': authenticityToken,
+      },
+      body: JSON.stringify(body),
+      credentials: 'same-origin',
+    }).then(r => r.json());
+
+    form.reset();
+
+    const { tasks } = task;
+
+    console.log(tasks);
+
+    const newestTask = tasks[tasks.length - 1];
+    console.log(newestTask);
+
+    const { description, id: taskId } = newestTask;
+    const { id: listId } = task;
+
+    $('.task__list').innerHTML += `
+      <li class="task__list--item">
+        <form class="edit_task" id="edit_task_${taskId}" action="/lists/${listId}/tasks/${taskId}" method="post">
+          <input id="task-${taskId}" type="checkbox" value="1" name="task[status]" />
+          <label><span>${description}</span></label>
+        </form>
+        <button class="button task__form--destroy" id="delete__task" data-task-id="${taskId}" data-list-id="${listId}">Delete Task</button>
+      </li>`;
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 export default createTask;
