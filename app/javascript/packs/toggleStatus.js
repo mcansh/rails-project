@@ -1,8 +1,8 @@
 import { $ } from './bling';
 
-function toggleStatus(e) {
+const toggleStatus = e => {
   e.preventDefault();
-  const {target} = e;
+  const { target } = e;
   const { checked } = target;
 
   const form = target.closest('form');
@@ -11,7 +11,6 @@ function toggleStatus(e) {
     task: {
       status: checked,
     },
-    authenticity_token: authenticityToken,
   };
   const url = form.action;
   fetch(url, {
@@ -19,10 +18,11 @@ function toggleStatus(e) {
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
+      'x-csrf-token': authenticityToken,
     },
     credentials: 'same-origin',
     body: JSON.stringify(body),
   }).catch(err => console.error(err));
-}
+};
 
 export default toggleStatus;
