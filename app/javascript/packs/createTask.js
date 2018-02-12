@@ -44,7 +44,9 @@ const createTask = async e => {
           <label><span>${description}</span></label>
         </form>
         <button class="button task__form--destroy" id="delete__task" data-task-id="${taskId}" data-list-id="${listId}">Delete Task</button>
-      </li>`;
+        <a class="button" href="/lists/${listId}/tasks/${taskId}">View Task</a>
+      </li>
+    `;
   } catch (error) {
     console.error(error);
   }

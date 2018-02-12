@@ -16,7 +16,7 @@ const deleteTask = async e => {
       },
       credentials: 'same-origin',
     })
-      .then(e.target.parentElement.remove())
+      .then(() => e.target.parentElement.remove())
       .catch(err => console.error(err));
   } catch (error) {
     console.error(error);
