@@ -1,11 +1,11 @@
 import { $ } from './bling';
 
 function updateListName(e) {
-  e.stopImmediatePropagation()
+  e.preventDefault();
   const input = $('#list__name');
   const editButton = $('#edit__button');
   const authenticityToken = $('meta[name="csrf-token"]').content;
-  const {readOnly} = input;
+  const { readOnly } = input;
   editButton.textContent = readOnly ? 'Update List' : 'Edit List';
   input.readOnly = !input.readOnly;
   const URL = editButton.pathname.split('/');
