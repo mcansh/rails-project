@@ -6,15 +6,17 @@
   </div>
 </div>
 
-<%= form_for @list do |list| %>
+<%= form_for @list, :html=> { :id => 'new_task' } do |list| %>
   <%= list.fields_for :tasks, @list.tasks.build(id: @list.tasks.size + 1) do |task| %>
   <fieldset>
-    <%= task.text_field :description, placeholder: "Create New Task", autofocus: true %>
+    <%= task.text_field :description, placeholder: "Create New Task", autofocus: true, id: 'task_description' %>
     <%= task.hidden_field :user_id, :value => current_user.id %>
   </fieldset>
   <% end %>
 <% end %>
 
-<ul class="task__list">
-  <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
-</ul>
+<% if @list.tasks.any? %>
+  <ul class="task__list">
+    <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
+  </ul>
+<% end %>
