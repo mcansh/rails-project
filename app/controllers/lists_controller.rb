@@ -23,7 +23,10 @@ class ListsController < ApplicationController
 
   def todo
     @lists = @current_user.show_incomplete
-    render :todo
+    respond_to do |format|
+      format.html { render :todo }
+      format.json { render json: @lists }
+    end
   end
 
   def create

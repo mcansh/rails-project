@@ -7,10 +7,7 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
 
     if @task.save
-      respond_to do |format|
-        format.html { redirect_to @list }
-        format.json
-      end
+      redirect_to @list
     else
       flash[:error] = @task.errors.full_messages
       render "lists/show"
