@@ -7,7 +7,10 @@ class TasksController < ApplicationController
     @task.user_id = current_user.id
 
     if @task.save
-      redirect_to @list
+      respond_to do |format|
+        format.html { redirect_to @list }
+        format.json
+      end
     else
       flash[:error] = @task.errors.full_messages
       render "lists/show"
@@ -23,6 +26,10 @@ class TasksController < ApplicationController
 
   def update
     @task.update(task_params)
+    respond_to do |format|
+      format.html { redirect_to @list }
+      format.json
+    end
   end
 
   def destroy
