@@ -47,7 +47,10 @@ class ListsController < ApplicationController
   def update
     @list.update(list_params)
     flash[:notice] = ["#{@list.name} updated!"]
-    redirect_to @list
+    respond_to do |format|
+      format.html { redirect_to @list }
+      format.json
+    end
   end
 
   def destroy
