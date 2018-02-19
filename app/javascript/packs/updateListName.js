@@ -3,6 +3,7 @@ import { $ } from './bling';
 function updateListName(e) {
   e.preventDefault();
   const input = $('#list__name');
+  const currentName = input.value;
   const editButton = $('#edit__button');
   const authenticityToken = $('meta[name="csrf-token"]').content;
   const { readOnly } = input;
@@ -11,7 +12,7 @@ function updateListName(e) {
   const URL = editButton.pathname.split('/');
   const listId = URL[2];
 
-  if (!readOnly) {
+  if (!readOnly && currentName !== input.value) {
     const name = input.value;
     const body = {
       list: {
