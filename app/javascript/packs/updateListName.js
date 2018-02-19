@@ -12,7 +12,7 @@ function updateListName(e) {
   const URL = editButton.pathname.split('/');
   const listId = URL[2];
 
-  if (!readOnly && currentName !== input.value) {
+  if (!readOnly) {
     const name = input.value;
     const body = {
       list: {
