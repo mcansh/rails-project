@@ -9,7 +9,6 @@ form p {
 
 input {
   display: block;
-  margin-top: 0.25rem;
   padding: 0.5rem;
   font-size: 1rem;
   border-radius: 5px;
@@ -17,6 +16,10 @@ input {
   &:focus {
     border-color: $main;
   }
+}
+
+input[type="test"] {
+  margin-top: 0.25rem;
 }
 
 .field_with_errors input {
