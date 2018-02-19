@@ -1,16 +1,18 @@
 import { $ } from './bling';
+import patchRequest from './patchRequest';
 
-function updateListName(e) {
+const updateListName = async e => {
   e.preventDefault();
   const input = $('#list__name');
-  const currentName = input.value;
   const editButton = $('#edit__button');
   const authenticityToken = $('meta[name="csrf-token"]').content;
   const { readOnly } = input;
   editButton.textContent = readOnly ? 'Update List' : 'Edit List';
   input.readOnly = !input.readOnly;
   const URL = editButton.pathname.split('/');
-  const listId = URL[2];
+  const id = URL[2];
+
+  const url = `/lists/${id}`;
 
   if (!readOnly) {
     const name = input.value;
@@ -18,18 +20,10 @@ function updateListName(e) {
       list: {
         name,
       },
-      authenticity_token: authenticityToken,
     };
-    fetch(`/lists/${listId}`, {
-      method: 'PATCH',
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      credentials: 'same-origin',
-      body: JSON.stringify(body),
-    }).catch(err => console.error(err));
+
+    await patchRequest({ url, body, authenticityToken });
   }
-}
+};
 
 export default updateListName;
