@@ -9,6 +9,7 @@ const updateListName = async e => {
   const { readOnly } = input;
   editButton.textContent = readOnly ? 'Update List' : 'Edit List';
   input.readOnly = !input.readOnly;
+  input.disabled = !input.disabled;
   const URL = editButton.pathname.split('/');
   const id = URL[2];
 
