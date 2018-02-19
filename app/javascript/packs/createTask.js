@@ -29,10 +29,7 @@ const createTask = async e => {
 
     const { tasks } = task;
 
-    console.log(tasks);
-
     const newestTask = tasks[tasks.length - 1];
-    console.log(newestTask);
 
     const { description, id: taskId } = newestTask;
     const { id: listId } = task;
