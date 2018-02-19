@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_list
-  before_action :set_task, only: [:update, :destroy]
+  before_action :set_task, only: [:update, :destroy, :show]
 
   def create
     @task = @list.tasks.build(task_params)
@@ -15,7 +15,6 @@ class TasksController < ApplicationController
   end
 
   def show
-    @task = Task.find_by(id: params[:id])
     respond_to do |format|
       format.html { render :show }
       format.json { render json: @task }
