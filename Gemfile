@@ -26,7 +26,7 @@ gem 'omniauth'
 gem 'omniauth-github'
 gem 'omniauth-twitter'
 
-gem 'webpacker', github: 'rails/webpacker'
+gem 'webpacker', '~> 3.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
