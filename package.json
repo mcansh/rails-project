@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "private": true,
     "scripts": {
-        "dev": "./bin/webpack --colors --progress --watch",
+        "watch": "./bin/webpack --colors --progress --watch",
         "rails": "bundle exec rails s",
-        "watch": "concurrently --names \"webpack,rails\" --prefix name \"npm run dev\" \"npm run rails\"",
+        "dev": "concurrently --names \"webpack,rails\" --prefix name \"npm run watch\" \"npm run rails\"",
         "start": "npm run rails",
         "test": "eslint ./"
     },
