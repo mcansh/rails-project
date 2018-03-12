@@ -3,11 +3,19 @@ class ListsController < ApplicationController
   def index
     @list = List.new
     @lists = @current_user.lists
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render json: @lists }
+    end
   end
 
   def show
-    @list = List.find_by(id: params[:id])
-    if @list.user_id != @current_user.id
+    if @list && @list.user_id == @current_user.id
+      respond_to do |format|
+        format.html { render :show }
+        format.json { render json: @list }
+      end
+    else
       flash[:error] = ["List not found"]
       redirect_to root_path
     end
@@ -15,7 +23,10 @@ class ListsController < ApplicationController
 
   def todo
     @lists = @current_user.show_incomplete
-    render :todo
+    respond_to do |format|
+      format.html { render :todo }
+      format.json { render json: @lists }
+    end
   end
 
   def create
@@ -39,7 +50,10 @@ class ListsController < ApplicationController
   def update
     @list.update(list_params)
     flash[:notice] = ["#{@list.name} updated!"]
-    redirect_to @list
+    respond_to do |format|
+      format.html { redirect_to @list }
+      format.json
+    end
   end
 
   def destroy

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       redirect_to root_path
     else
       @email = User.find_by(email: params[:email])
-      @username = User.find_by(username: [params[:username]])
+      @username = User.find_by(username: [params[:email]])
       @user = @email ||= @username
       if @user && @user.authenticate(params[:password])
         flash[:notice] = ['Welcome back!']

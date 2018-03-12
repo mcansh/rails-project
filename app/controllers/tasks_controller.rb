@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_list
-  before_action :set_task, only: [:update, :destroy]
+  before_action :set_task, only: [:update, :destroy, :show]
+
   def create
     @task = @list.tasks.build(task_params)
     @task.user_id = current_user.id
@@ -13,18 +14,23 @@ class TasksController < ApplicationController
     end
   end
 
-  def update
-    @task.update(task_params)
-    redirect_to @task.list
+  def show
+    respond_to do |format|
+      format.html { render :show }
+      format.json { render json: @task }
+    end
   end
 
-  def show
-    @task = Task.find_by(id: params[:id])
+  def update
+    @task.update(task_params)
+    respond_to do |format|
+      format.html { redirect_to @list }
+      format.json
+    end
   end
 
   def destroy
     @task.destroy
-    redirect_to @list
   end
 
   private

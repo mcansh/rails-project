@@ -1,20 +1,28 @@
 <%= form_for(@user) do |f| %>
   <h1>Sign Up</h1>
   <fieldset>
-    <%= f.label :name %>
-    <%= f.text_field :name, value: @user.name, autofocus: true %>
+    <%= f.label :name do %>
+      Name
+      <%= f.text_field :name, value: @user.name, autofocus: true %>
+    <% end %>
   </fieldset>
   <fieldset>
-    <%= f.label :username %>
-    <%= f.text_field :username, value: @user.username %>
+    <%= f.label :username do %>
+      Username
+      <%= f.text_field :username, value: @user.username %>
+    <% end %>
   </fieldset>
   <fieldset>
-    <%= f.label :email %>
-    <%= f.email_field :email, value: @user.email %>
+    <%= f.label :email do %>
+      Email
+      <%= f.email_field :email, value: @user.email %>
+    <% end %>
   </fieldset>
   <fieldset>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.label :password do %>
+      Password
+      <%= f.password_field :password %>
+    <% end %>
   </fieldset>
   <fieldset>
     <%= f.button 'Sign Up' %>

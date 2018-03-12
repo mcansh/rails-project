@@ -1,13 +1,17 @@
+<% title @list.name %>
+
 <div class="list__nav">
-  <h1><%= @list.name %></h1>
-  <%= link_to 'Edit List', edit_list_path(@list), class: 'button' %>
-  <%= button_to 'Delete List', list_path(@list), method: :delete, class: 'list__form--destroy button' %>
+  <input id="list__name" type="text" readonly disabled value="<%= @list.name %>" />
+  <div class="list__nav--buttons">
+    <%= link_to 'Edit List', edit_list_path(@list), class: 'button', id: 'edit__button' %>
+    <%= button_to 'Delete List', list_path(@list), method: :delete, class: 'list__form--destroy button' %>
+  </div>
 </div>
 
-<%= form_for @list do |list| %>
+<%= form_for @list, :html=> { :id => 'new_task' } do |list| %>
   <%= list.fields_for :tasks, @list.tasks.build(id: @list.tasks.size + 1) do |task| %>
   <fieldset>
-    <%= task.text_field :description, placeholder: "Create New Task", autofocus: true %>
+    <%= task.text_field :description, placeholder: "Create New Task", autofocus: true, id: 'task_description' %>
     <%= task.hidden_field :user_id, :value => current_user.id %>
   </fieldset>
   <% end %>
@@ -15,6 +19,9 @@
 
 <% if @list.tasks.any? %>
   <ul class="task__list">
-    <%= render collection: @list.tasks, partial: "tasks/task_li", as: :task %>
+    <%= render partial: "tasks/task_li", collection: @list.tasks, as: :task %>
   </ul>
 <% end %>
+
+
+<button id="next-list">Show next list</button>

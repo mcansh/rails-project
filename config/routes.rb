@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/signin' => 'sessions#new'
   get '/signout' => 'sessions#destroy'
 
-  get 'lists/todo' => 'lists#todo'
+  get '/todo' => 'lists#todo'
 
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create]

@@ -6,8 +6,15 @@ input[type='checkbox'] {
   display: none;
 }
 
+input[type="checkbox"] + label {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
 input[type='checkbox'] + label::before {
   content: '⬜';
+  margin-right: 10px;
 }
 
 input:checked + label {
@@ -23,14 +30,32 @@ input:checked + label {
   list-style: none;
   padding: 0;
   margin-top: 1rem;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
 .list__nav {
   display: flex;
   align-items: center;
   margin-bottom: 2em;
-  h1 {
+  #list__name {
     flex-grow: 1;
+    font-size: 2rem;
+    appearance: none;
+    border: none;
+    display: block;
+  }
+  &--buttons {
+    display: inline-flex;
+  }
+}
+
+@media (max-width: 500px) {
+  .list__nav {
+    flex-direction: column;
+    h1 {
+      margin-bottom: 10px;
+    }
   }
 }
 

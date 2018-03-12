@@ -1,4 +1,3 @@
-/* eslint no-console:0 */
 // This file is automatically compiled by Webpack, along with any other files
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
@@ -6,11 +5,37 @@
 //
 // To reference this file, add <%= javascript_pack_tag 'application' %> to the appropriate
 // layout file, like app/views/layouts/application.html.erb
-
-import markComplete from './markTaskAsComplete';
+import 'babel-polyfill';
+import { $ } from './bling';
+import toggleStatus from './toggleStatus';
 import deleteList from './deleteList';
-import { $, $$ } from './bling';
+import deleteTask from './deleteTask';
+import createTask from './createTask';
+import updateListName from './updateListName';
+import consoleStyles from './log';
+import nextTask from './changeTask';
+import nextList from './changeList';
 
+console.log('%c Your productivity just increased 9001% 🚀', consoleStyles);
 
-$$('input[type="checkbox"]').on('change', markComplete);
-$$('.list__form--destroy').on('click', deleteList);
+if ($('.task__list')) {
+  $('.task__list').on('change', toggleStatus);
+  $('.task__list').on('click', deleteTask);
+  $('.list__form--destroy').on('click', deleteList);
+}
+
+if ($('#edit__button')) {
+  $('#edit__button').on('click', updateListName);
+}
+
+if ($('#new_task')) {
+  $('#new_task').on('submit', createTask);
+}
+
+if ($('#next-task')) {
+  $('#next-task').on('click', nextTask);
+}
+
+if ($('#next-list')) {
+  $('#next-list').on('click', nextList);
+}
