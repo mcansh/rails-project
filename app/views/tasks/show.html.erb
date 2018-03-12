@@ -1,3 +1,11 @@
 <% title @task.description %>
 
-<h1><%= @task.description %></h1>
+<h1 id="task-description"><%= @task.description %></h1>
+
+<button
+  data-list-id="<%= @task.list.id %>"
+  data-task-id="<%= @task.id %>"
+  id="next-task"
+>
+  Show next task
+</button>

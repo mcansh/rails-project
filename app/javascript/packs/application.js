@@ -13,6 +13,7 @@ import deleteTask from './deleteTask';
 import createTask from './createTask';
 import updateListName from './updateListName';
 import consoleStyles from './log';
+import nextTask from './changeTask';
 
 console.log('%c Your productivity just increased 9001% 🚀', consoleStyles);
 
@@ -28,4 +29,8 @@ if ($('#edit__button')) {
 
 if ($('#new_task')) {
   $('#new_task').on('submit', createTask);
+}
+
+if ($('#next-task')) {
+  $('#next-task').on('click', nextTask);
 }
