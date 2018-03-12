@@ -14,6 +14,7 @@ import createTask from './createTask';
 import updateListName from './updateListName';
 import consoleStyles from './log';
 import nextTask from './changeTask';
+import nextList from './changeList';
 
 console.log('%c Your productivity just increased 9001% 🚀', consoleStyles);
 
@@ -33,4 +34,8 @@ if ($('#new_task')) {
 
 if ($('#next-task')) {
   $('#next-task').on('click', nextTask);
+}
+
+if ($('#next-list')) {
+  $('#next-list').on('click', nextList);
 }
