@@ -15,6 +15,7 @@ import updateListName from './updateListName';
 import consoleStyles from './log';
 import nextTask from './changeTask';
 import nextList from './changeList';
+import filterList from './filterList';
 
 console.log('%c Your productivity just increased 9001% 🚀', consoleStyles);
 
@@ -22,6 +23,7 @@ if ($('.task__list')) {
   $('.task__list').on('change', toggleStatus);
   $('.task__list').on('click', deleteTask);
   $('.list__form--destroy').on('click', deleteList);
+  $('#filter-short-tasks').on('click', filterList);
 }
 
 if ($('#edit__button')) {

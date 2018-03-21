@@ -17,6 +17,8 @@
   <% end %>
 <% end %>
 
+<button id="filter-short-tasks">Filter</button>
+
 <% if @list.tasks.any? %>
   <ul class="task__list">
     <%= render partial: "tasks/task_li", collection: @list.tasks, as: :task %>
