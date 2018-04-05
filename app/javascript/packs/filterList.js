@@ -24,9 +24,9 @@ const filterList = async e => {
       <form class="edit_task" id="edit_task_${task.id}" action="/lists/${
           task.list_id
         }/tasks/${task.id}" method="post">
-        <input id="task-${
-          task.id
-        }" type="checkbox" value="1" name="task[status]" />
+        <input id="task-${task.id}" type="checkbox" ${
+          task.status ? 'checked' : ''
+        } value="1" name="task[status]" />
         <label><span>${task.description}</span></label>
       </form>
       <button class="button task__form--destroy" id="delete__task" data-task-id="${
