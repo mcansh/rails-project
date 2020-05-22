@@ -4,7 +4,6 @@ on: [push, pull_request]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     services:
@@ -18,20 +17,50 @@ jobs:
           --health-retries 5
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
     - name: Set up Ruby 2.6
       uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6
+
+    - name: Set up cache key and directory for gems cache
+      uses: actions/cache@v1
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gem-use-ruby-${{ hashFiles('**/Gemfile.lock') }}
+        
+    - name: Set up Node 12
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+        
+    - name: Get yarn cache directory path
+      id: yarn-cache-dir-path
+      run: echo "::set-output name=dir::$(yarn cache dir)"
+        
+    - name: Set up cache key and directory for node_modules
+      uses: actions/cache@v1
+      with:
+        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-yarn-
+          
+    - name: Install node_modules and gems
+      run: |
+        yarn --frozen-lockfile
+        sudo apt-get -yqq install libpq-dev
+        gem install bundler
+        bundle install --jobs 4 --retry 3
+
     - name: Build and test with Rake
       env:
         PGHOST: 127.0.0.1
         PGUSER: postgres
         RAILS_ENV: test
       run: |
-        sudo apt-get -yqq install libpq-dev
-        gem install bundler
-        bundle install --jobs 4 --retry 3
         bundle exec rails db:create
         bundle exec rails db:migrate
         bundle exec rails test
